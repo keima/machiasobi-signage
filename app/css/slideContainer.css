@@ -1,0 +1,16 @@
+#slide-container {
+    position: fixed;
+    top: 0;
+    left: 660px;
+
+    width: 1260px;
+    height: 980px;
+    box-sizing: border-box;
+
+    /*border: 10px solid green;*/
+}
+
+#slide-container > div {
+    left: 1320px !important;
+    top:  490px  !important;
+}

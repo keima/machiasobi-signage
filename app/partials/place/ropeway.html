@@ -1,0 +1,40 @@
+<div class="slide traffic" id="ropeway">
+  <div ng-controller="RopewayCtrl" class="parent">
+    <h1>ロープウェイ</h1>
+
+    <div class="container">
+      <div class="cell inbound">
+        <h2>上り(山頂行)</h2>
+
+        <div class="duration">
+          <div class="message">只今の待ち時間</div>
+          <div class="time">約<span>{{ inbound.delay }}</span>分</div>
+        </div>
+        <div class="notice info" ng-show="inbound.message">
+          {{ inbound.message }}
+        </div>
+
+      </div>
+
+      <div class="cell outbound">
+        <h2>下り(山麓行)</h2>
+
+        <div class="duration">
+          <div class="message">只今の待ち時間</div>
+          <div class="time">約<span>{{ outbound.delay }}</span>分</div>
+        </div>
+        <div class="notice info" ng-show="outbound.message">
+          {{ outbound.message }}
+        </div>
+      </div>
+    </div>
+
+    <div class="notice alert">
+      <p>
+        <strong>待ち時間は目安です。</strong><br>
+        運行状況により実際の時間と異なる場合があります
+      </p>
+    </div>
+
+  </div>
+</div>

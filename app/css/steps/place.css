@@ -1,0 +1,172 @@
+/* place-implで適用 */
+
+.place .container {
+    height: 620px;
+}
+
+.place dl {
+    width: 100%;
+}
+
+.place dl.timescore {
+    height: 240px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.place dl.timescore dt.time {
+    width: 320px;
+    height: 100%;
+
+    float: left;
+    box-sizing: border-box;
+
+    padding: 25px;
+
+    font-size: 100px;
+    text-align: center;
+    font-weight: 900;
+    line-height: 175px;
+}
+
+.place dl.timescore dt.time div {
+    height: 100%;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 10px;
+}
+
+.place dl.timescore dt.time span {
+    font-size: 60px;
+    font-weight: 500;
+    margin-left: 0.12em;
+    margin-bottom: 0.3em;
+}
+
+.place dl.timescore dd {
+    background: rgba(255,255,255,0.75);
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.place dd.status {
+    float: right;
+    width: 640px;
+    height: 105px;
+    padding-top: 25px;
+
+    font-size: 60px;
+    line-height: 63px;
+    font-weight: 600;
+
+    border-top-left-radius: 10px;
+
+}
+
+.place dd.message {
+    float: right;
+    width: 640px;
+    height: 135px;
+    padding-bottom: 25px;
+
+    font-size: 40px;
+    line-height: 43px;
+    font-weight: 500;
+
+    display: table-cell;
+    vertical-align: middle;
+
+    border-bottom-left-radius: 10px;
+
+    overflow: hidden;
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis;*/
+}
+
+.place dl.timetable {
+    height: 360px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.place dl.timetable dt {
+    box-sizing: border-box;
+
+    height: 30px;
+
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 30px;
+
+}
+.place dt div.time-range {
+    float: right;
+
+    height: 28px;
+}
+.place dl.timetable dd {
+    box-sizing: border-box;
+
+    height: 80px;
+    
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 80px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/*.place .container {*/
+/*display: flex;*/
+/*justify-content: space-around;*/
+/*}*/
+
+/*.place .clock{*/
+/*width: 400px;*/
+/*padding-right: 20px;*/
+/*}*/
+
+/*.place .message {*/
+/*margin-top: 10px;*/
+/*padding: 20px;*/
+
+/*background-color: rgba(255, 255, 255, .6);*/
+/*border: solid 1px rgba(0, 0, 0, 0.3);*/
+/*border-radius: 10px;*/
+
+/*font-size: 40px;*/
+/*}*/
+
+/*.place .timetable {*/
+/*width: 400px;*/
+/*padding-left: 20px;*/
+/*}*/
+
+/*.place .timetable dl {*/
+/*padding: 20px;*/
+
+/*background-color: rgba(255, 255, 255, .6);*/
+/*border: solid 1px rgba(0, 0, 0, 0.3);*/
+/*border-radius: 10px;*/
+/*}*/
+
+/*.place .timetable dt {*/
+/*font-size: 40px;*/
+/*font-weight: 600;*/
+/*}*/
+
+/*.place .timetable dd {*/
+/*overflow: hidden;*/
+/*white-space: nowrap;*/
+/*font-size: 50px;*/
+
+/*margin-bottom: 20px;*/
+/*margin-left: -20px;*/
+/*margin-right: -20px;*/
+/*}*/
+
+/*.place .timetable dd:last-child {*/
+/*margin-bottom: 0;*/
+/*}*/

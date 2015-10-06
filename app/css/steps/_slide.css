@@ -1,0 +1,45 @@
+/*
+ * COMMON STEP STYLES
+ * inspired by: http://html5slides.googlecode.com/svn/trunk/styles.css
+ */
+.slide {
+    box-sizing: border-box;
+
+    width: 1080px;
+    height: 810px;
+    /*width: 900px;*/
+    /*height: 700px;*/
+
+    padding: 40px 60px;
+
+    color: rgb(102, 102, 102);
+    font-size: 30px;
+    line-height: 1.5;
+
+    background-color: white;
+    background-repeat: round;
+
+    border: 1px solid rgb(180,180,180);
+    border-radius: 10px;
+
+
+}
+
+.slide h1 {
+    font-size: 60px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: 0.2em;
+}
+
+.slide ul {
+    list-style: circle;
+}
+.slide li {
+    font-size: 60px;
+    margin-left: 40px;
+    font-weight: bold;
+}
+.slide li li {
+    font-weight: normal;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="shortcut icon" href="./favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+  <!-- #build:vendorcss -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/octicons/octicons/octicons.css">
+  <!-- endinject -->
+  <!-- #endbuild -->
+
+  <!-- build:css -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/00.reset.css">
+  <link rel="stylesheet" href="css/01.impress.css">
+  <link rel="stylesheet" href="css/slideContainer.css">
+  <link rel="stylesheet" href="css/telop.css">
+  <link rel="stylesheet" href="css/parts/notice.css">
+  <link rel="stylesheet" href="css/parts/octicons.css">
+  <link rel="stylesheet" href="css/parts/signals.css">
+  <link rel="stylesheet" href="css/sideview/bizan.css">
+  <link rel="stylesheet" href="css/sideview/impl.css">
+  <link rel="stylesheet" href="css/sideview/ryogoku.css">
+  <link rel="stylesheet" href="css/sideview/shinmachi.css">
+  <link rel="stylesheet" href="css/sideview/sideviews.css">
+  <link rel="stylesheet" href="css/steps/_fullsize.css">
+  <link rel="stylesheet" href="css/steps/_slide.css">
+  <link rel="stylesheet" href="css/steps/_step.css">
+  <link rel="stylesheet" href="css/steps/bizan.css">
+  <link rel="stylesheet" href="css/steps/museum.css">
+  <link rel="stylesheet" href="css/steps/overview.css">
+  <link rel="stylesheet" href="css/steps/place.css">
+  <link rel="stylesheet" href="css/steps/ryogoku.css">
+  <link rel="stylesheet" href="css/steps/shinmachi.css">
+  <link rel="stylesheet" href="css/steps/traffic.css">
+  <!-- endinject -->
+  <!-- endbuild -->
+
+  <title>マチ★アソビ Digital Signage</title>
+</head>
+<body ng-app="myApp">
+
+<div id="slide-container" ng-controller="SlideCtrl" ng-keydown="keydownEvent($event)" tabindex="0">
+
+  <div ng-if="steps.length > 0">
+
+    <div ng-repeat="step in steps"
+         class="step"
+         ng-attr-id="{{ step.id }}"
+         ng-show="currentId == $index"
+        >
+
+      <!--Normal Content-->
+      <ng-include ng-if="step.type === 'html' || step.type === 'markdown'"
+                  src="'./partials/steps-simple.html'"></ng-include>
+
+      <!--Partial Content-->
+      <ng-include ng-if="step.type === 'partial'"
+                  src="step.partialPath"></ng-include>
+    </div>
+
+  </div>
+
+</div>
+
+<ng-include src="'./partials/telop.html'"></ng-include>
+<ng-include src="'./partials/sideview/bizan.html'"></ng-include>
+<ng-include src="'./partials/sideview/shinmachi.html'"></ng-include>
+<!--<ng-include src="'./partials/sideview/ryogoku.html'"></ng-include>-->
+
+
+<!-- build:vendorjs -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/momentjs/moment.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/jmpress/src/components/core.js"></script>
+<script src="bower_components/jmpress/src/components/near.js"></script>
+<script src="bower_components/jmpress/src/components/transform.js"></script>
+<script src="bower_components/jmpress/src/components/active.js"></script>
+<script src="bower_components/jmpress/src/components/circular.js"></script>
+<script src="bower_components/jmpress/src/components/start.js"></script>
+<script src="bower_components/jmpress/src/components/hash.js"></script>
+<script src="bower_components/jmpress/src/components/keyboard.js"></script>
+<script src="bower_components/jmpress/src/components/mobile.js"></script>
+<script src="bower_components/jmpress/src/plugins/duration.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+
+<!-- build:js -->
+<!-- inject:js -->
+<script src="js/app.js"></script>
+<script src="js/constant.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/filter.js"></script>
+<script src="js/service.js"></script>
+<script src="js/controllers/BusCtrl.js"></script>
+<script src="js/controllers/MuseumCtrl.js"></script>
+<script src="js/controllers/PlaceCtrl.js"></script>
+<script src="js/controllers/RopewayCtrl.js"></script>
+<script src="js/controllers/SideviewCtrl.js"></script>
+<script src="js/controllers/SlideCtrl.js"></script>
+<script src="js/controllers/TelopCtrl.js"></script>
+<script src="js/external/angular-jmpress.js"></script>
+<script src="js/external/simpleMarquee.js"></script>
+<script src="js/services/calendar.js"></script>
+<script src="js/services/delay.js"></script>
+<script src="js/services/moment.js"></script>
+<script src="js/services/signagemanager.js"></script>
+<script src="js/services/steps.js"></script>
+<script src="js/services/traffic.js"></script>
+<script src="js/services/weather.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+
+</body>
+</html>

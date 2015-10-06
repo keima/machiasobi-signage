@@ -1,0 +1,70 @@
+<div class="place">
+  <h1>{{ item.title }}</h1>
+
+  <div class="container">
+
+    <dl class="timescore" ng-class="{
+      'signal-delay': item.delay > 0,
+      'signal-ontime': item.delay == 0,
+      'signal-haste': item.delay < 0
+      }">
+      <dt class="time">
+      <div>
+        {{ item.delay | abs }}<span>分</span>
+      </div>
+      </dt>
+      <dd class="status">
+        <span ng-show="item.delay > 0">遅れています</span>
+        <span ng-show="item.delay == 0">定刻通り</span>
+        <span ng-show="item.delay < 0">早く進んでいます</span>
+      </dd>
+      <dd class="message">
+        {{ item.message }}
+      </dd>
+    </dl>
+
+    <dl class="timetable">
+      <dt ng-repeat-start="event in events">
+        <span ng-if="$index == 0">現在</span>
+        <span ng-if="$index == 1">次</span>
+        <span ng-if="$index == 2">次の次</span>
+      <div class="time-range">
+      {{ event.start.dateTime | date:"HH:mm" }} 〜 {{ event.end.dateTime | date:"HH:mm" }}
+      </div>
+      </dt>
+      <dd ng-repeat-end>
+        {{ event.summary }}
+      </dd>
+    </dl>
+
+
+    <!--<div class="clock">
+      <div class="signal" ng-class="{
+      'signal-delay': item.delay > 0,
+      'signal-ontime': item.delay == 0,
+      'signal-haste': item.delay < 0
+      }">
+        <div class="time">{{ item.delay | abs }}<span>分</span></div>
+        <div class="text">
+          <span ng-show="item.delay > 0">遅れています</span>
+          <span ng-show="item.delay == 0">定刻通り</span>
+          <span ng-show="item.delay < 0">早く進んでいます</span>
+        </div>
+      </div>
+      <div class="message">
+        {{ item.message }}
+      </div>
+    </div>
+    <div class="timetable">
+      <dl>
+        <dt ng-repeat-start="event in events">
+          <span ng-if="$index == 0">現在</span>
+          <span ng-if="$index == 1">次</span>
+          <span ng-if="$index == 2">次の次</span>
+        </dt>
+        <dd ng-repeat-end
+            simple-marquee scroll="isMarquee" duration="'4000'">{{ event.summary }}</dd>
+      </dl>
+    </div>-->
+  </div>
+</div>

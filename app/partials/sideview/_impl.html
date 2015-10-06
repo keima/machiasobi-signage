@@ -1,0 +1,50 @@
+<table>
+  <tr>
+    <td rowspan="4" class="telop-signal" ng-class="{
+      'signal-blue':  ctrl.item.delay < 0,
+      'signal-green': ctrl.item.delay == 0,
+      'signal-yellow':ctrl.item.delay > 0 && ctrl.item.delay < 60,
+      'signal-red':   ctrl.item.delay >= 60
+    }" ng-click="ctrl.click()"></td>
+    <th colspan="2" class="telop-placeName">
+      {{ ctrl.item.title }}
+    </th>
+  </tr>
+  <tr>
+    <td class="telop-icon">
+      <span class="octicon inherit octicon-clock"></span>
+    </td>
+    <td class="telop-time">
+      {{ ctrl.item.delay | abs }}<span>分</span>
+    </td>
+  </tr>
+  <tr>
+    <td class="telop-icon">
+        <span class="octicon inherit" ng-class="{
+          'octicon-info':         ctrl.item.delay < 0,
+          'octicon-thumbsup':     ctrl.item.delay == 0,
+          'octicon-issue-opened': ctrl.item.delay > 0 && ctrl.item.delay < 60,
+          'octicon-flame':        ctrl.item.delay >= 60
+        }"></span>
+    </td>
+    <td class="telop-status">
+      <span ng-show="ctrl.item.delay > 0">
+        遅れています
+      </span>
+      <span ng-show="ctrl.item.delay == 0">
+        定刻通り
+      </span>
+      <span ng-show="ctrl.item.delay < 0">
+        早く進んでいます
+      </span>
+    </td>
+  </tr>
+  <tr class="telop-event">
+    <td colspan="2">
+      <div class="marquee"
+           simple-marquee scroll="ctrl.isMarquee" duration="'8000'">
+        {{ ctrl.event.summary }}
+      </div>
+    </td>
+  </tr>
+</table>

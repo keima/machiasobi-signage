@@ -1,0 +1,58 @@
+#ropeway {
+    background-image: url(../../image/ropeway.png);
+    border: none;
+}
+
+#shuttle-bus {
+    background-image: url(../../image/awaodori-hall.png);
+    border: none;
+}
+
+.traffic .ng-scope {
+    height: 100%;
+}
+
+.traffic .parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.traffic .container {
+    max-height: 100%;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.traffic .cell {
+    width: 440px;
+}
+
+.traffic h2 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.traffic .duration {
+    text-align: center;
+    
+    border-radius: 10px;
+    border: solid 1px rgba(0,0,0,0.3);
+
+    background-color: rgba(255, 255, 255, .6);
+
+    margin-bottom: 20px;
+}
+
+.traffic .duration .message {
+    font-size: 50px;
+}
+
+.traffic .duration .time {
+    font-size: 80px;
+    font-weight: 800;
+}
+

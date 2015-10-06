@@ -1,0 +1,21 @@
+<div class="slide" id="museum">
+  <div ng-controller="MuseumCtrl" class="parent">
+    <h1>橋の下美術館</h1>
+
+    <div class="container">
+      <div class="duration">
+        <div class="message">只今の待ち時間</div>
+        <div class="time">約<span>{{ delay }}</span>分</div>
+      </div>
+      <div class="notice info" ng-show="message">
+        {{ message }}
+      </div>
+      <div class="notice alert">
+        <p>
+          <strong>待ち時間は目安です。</strong><br>
+          運行状況により実際の時間と異なる場合があります
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

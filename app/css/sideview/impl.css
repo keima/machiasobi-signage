@@ -1,0 +1,77 @@
+.telop-place {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 660px;
+    height: 490px;
+
+    background: #FFFFFF;
+}
+
+.telop-place table {
+    width: 100%;
+    height: 100%;
+}
+.telop-place tr {
+    width: 100%;
+    max-height: 100%;
+    height: 25%;
+    box-sizing: border-box;
+}
+.telop-place th, .telop-place td {
+    vertical-align: middle;
+}
+
+.telop-signal {
+    width: 80px;
+}
+.signal-blue {
+    background: linear-gradient(rgba(0,0,255,1), rgba(0,0,255,.2), rgba(0,0,255,1));
+}
+.signal-green {
+    background: linear-gradient(rgba(0,255,0,1), rgba(0,255,0,.2), rgba(0,255,0,1));
+}
+.signal-yellow {
+    background: linear-gradient(rgba(255,255,0,1), rgba(255,255,0,.2), rgba(255,255,0,1));
+}
+.signal-red {
+    background: linear-gradient(rgba(255,0,0,1), rgba(255,0,0,.2), rgba(255,0,0,1));
+}
+
+.telop-placeName {
+    font-size: 70px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.telop-time {
+    font-size: 100px;
+    font-weight: bold;
+}
+.telop-time span {
+    margin-left: 5px;
+    font-size: 0.68em;
+}
+
+.telop-status {
+    font-size: 60px;
+}
+.telop-icon {
+    width: 90px;
+    text-align: center;
+    font-size: 80px;
+}
+.telop-icon .octicon-flame {
+    color: #d50000;
+}
+
+.telop-event {
+    font-size: 60px;
+}
+.telop-event .marquee {
+    position: relative;
+    top:0;left:0;
+    overflow: hidden;
+    width: 580px;
+    height: 120px;
+}
