@@ -4,8 +4,6 @@ browserSync = require 'browser-sync'
 bowerFiles = require "main-bower-files"
 runSequence = require 'run-sequence'
 rimraf = require "rimraf"
-autoprefixer = require 'autoprefixer-core'
-reworkUrl = require 'rework-plugin-url'
 
 # config
 config =
@@ -57,11 +55,14 @@ gulp.task 'inject', ->
 
 gulp.task 'usemin', ->
   cssTask = (files, filename) ->
-    files.pipe $.pleeease(
-      import: {path: ["app/bower_components/octicons/octicons", "dist/fonts"]}
-#      rebaseUrls: false
+    files
+#    .pipe $.debug("CSS:")
+    .pipe $.cssRebaseUrls()
+    .pipe $.pleeease(
+#      import: {path: ["app/bower_components/octicons/octicons", "dist/fonts"]}
+      rebaseUrls: false
       autoprefixer: {browsers: ["last 4 versions", "ios 6", "android 4.0"]}
-      out: config.output + filename
+#      out: config.output + filename
     )
     .pipe $.concat(filename)
     .pipe $.rev()
