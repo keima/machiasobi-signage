@@ -16,7 +16,7 @@ angular.module('myApp.controller')
       $scope.item.message = resp.message;
 
       $scope.isMarquee = false;
-      var time = myMoment.subtract(resp.delay, "minutes");
+      var time = myMoment().subtract(resp.delay, "minutes");
 
       Calendar.getTodayData(calendarId, time)
         .then(function (_result) {
