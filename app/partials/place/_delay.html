@@ -28,8 +28,8 @@
         <span ng-if="$index == 0">現在</span>
         <span ng-if="$index == 1">次</span>
         <span ng-if="$index == 2">次の次</span>
-      <div class="time-range">
-      {{ event.start.dateTime | date:"HH:mm" }} 〜 {{ event.end.dateTime | date:"HH:mm" }}
+      <div class="time-range" ng-show="event.start.dateTime">
+      {{ event.start.dateTime | date:"HH:mm" }} 〜 {{ event.end.dateTime | date:"HH:mm" }} (予定)
       </div>
       </dt>
       <dd ng-repeat-end>
