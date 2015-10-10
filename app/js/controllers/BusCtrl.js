@@ -2,7 +2,11 @@
 
 angular.module('myApp.controller')
   .controller("BusCtrl", function ($scope, BusInboundTraffic, BusOutboundTraffic) {
-    $scope.inbound = $scope.outbound = {
+    $scope.inbound = {
+      delay: null,
+      message: ""
+    };
+    $scope.outbound = {
       delay: null,
       message: ""
     };

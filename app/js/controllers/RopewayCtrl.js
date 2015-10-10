@@ -2,7 +2,11 @@
 
 angular.module('myApp.controller')
   .controller("RopewayCtrl", function ($scope, RopewayInboundTraffic, RopewayOutboundTraffic) {
-    $scope.inbound = $scope.outbound = {
+    $scope.inbound = {
+      delay: null,
+      message: ""
+    };
+    $scope.outbound = {
       delay: null,
       message: ""
     };
