@@ -3,11 +3,6 @@
 angular.module('myApp.constant', [])
   .value("API_ENDPOINT", "http://machiasobi-tools.appspot.com")
   //.value("API_ENDPOINT", "http://localhost:8080")
-  .value("CalendarId", {
-    SHINMACHI: 'p-side.net_ctrq60t4vsvfavejbkdmbhv3k4@group.calendar.google.com',
-    RYOGOKU: 'p-side.net_timelrcritenrfmn86lco3qt9o@group.calendar.google.com',
-    BIZAN: "p-side.net_m9s9a5ut02n6ap1s6prdj92ss4@group.calendar.google.com"
-  })
   .value("PlacesValue", {
     SHINMACHI: {
       name: "新町橋東公園",
@@ -29,6 +24,10 @@ angular.module('myApp.constant', [])
       name: "あわぎんホール",
       calendarId: "p-side.net_oa45stb6g4h9lqiq5vd1ov844s@group.calendar.google.com"
     },
+    AWAGIN2: {
+      name: "あわぎん会議室",
+      calendarId: "p-side.net_2tbmmkk16s27skd2r696l642j0@group.calendar.google.com"
+    },
     CORNE: {
       name: "コルネの泉",
       calendarId: "p-side.net_jo112m9l36p6nlkrv939sb9kr0@group.calendar.google.com"
@@ -45,6 +44,8 @@ angular.module('myApp.constant', [])
     museum: './partials/place/museum.html',
     ropeway: './partials/place/ropeway.html',
     bus: './partials/place/bus.html',
-    sideviews: './partials/sideview/sideviews.html'
+    sideviews: './partials/sideview/sideviews.html',
+    awagin1: './partials/place/awagin1.html',
+    awagin2: './partials/place/awagin2.html'
   })
 ;

@@ -26,13 +26,21 @@ angular.module('myApp.controller')
     });
 
   })
-  .controller("ShinmachiPlaceCtrl", function (PlaceCtrlImpl, $scope, myMoment, Calendar, CalendarId, ShinmachiDelay) {
-    PlaceCtrlImpl($scope, myMoment, Calendar, CalendarId.SHINMACHI, ShinmachiDelay, "新町橋東公園");
+  .controller("ShinmachiPlaceCtrl", function (PlaceCtrlImpl, $scope, myMoment, Calendar, PlacesValue, ShinmachiDelay) {
+    PlaceCtrlImpl($scope, myMoment, Calendar, PlacesValue.SHINMACHI.calendarId, ShinmachiDelay, PlacesValue.SHINMACHI.name);
   })
-  .controller("RyogokuPlaceCtrl", function (PlaceCtrlImpl, $scope, myMoment, Calendar, CalendarId, RyogokuDelay) {
-    PlaceCtrlImpl($scope, myMoment, Calendar, CalendarId.RYOGOKU, RyogokuDelay, "両国橋西公園");
+  .controller("RyogokuPlaceCtrl", function (PlaceCtrlImpl, $scope, myMoment, Calendar, PlacesValue, RyogokuDelay) {
+    PlaceCtrlImpl($scope, myMoment, Calendar, PlacesValue.RYOGOKU.calendarId, RyogokuDelay, PlacesValue.RYOGOKU.name);
   })
-  .controller("BizanPlaceCtrl", function (PlaceCtrlImpl, $scope, myMoment, Calendar, CalendarId, BizanDelay) {
-    PlaceCtrlImpl($scope, myMoment, Calendar, CalendarId.BIZAN, BizanDelay, "眉山林間ステージ");
+  .controller("BizanPlaceCtrl", function (PlaceCtrlImpl, $scope, myMoment, Calendar, PlacesValue, BizanDelay) {
+    PlaceCtrlImpl($scope, myMoment, Calendar, PlacesValue.BIZAN.calendarId, BizanDelay, PlacesValue.BIZAN.name);
   })
+
+  .controller("Awagin1PlaceCtrl", function (PlaceCtrlImpl, $scope, myMoment, Calendar, PlacesValue, AwaginDelay) {
+    PlaceCtrlImpl($scope, myMoment, Calendar, PlacesValue.AWAGIN1.calendarId, AwaginDelay, PlacesValue.AWAGIN1.name);
+  })
+  .controller("Awagin2PlaceCtrl", function (PlaceCtrlImpl, $scope, myMoment, Calendar, PlacesValue, Awagin2Delay) {
+    PlaceCtrlImpl($scope, myMoment, Calendar, PlacesValue.AWAGIN2.calendarId, Awagin2Delay, PlacesValue.AWAGIN2.name);
+  })
+
 ;

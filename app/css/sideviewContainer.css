@@ -1,0 +1,12 @@
+#sideview-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 660px;
+    height: 980px;
+    box-sizing: border-box;
+}
+
+#sideview-container ng-include:not(:first-child) .telop-place {
+    border-top: 5px solid black;
+}

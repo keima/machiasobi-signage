@@ -47,9 +47,14 @@ angular.module('myApp.service')
   .factory("CinemaDelay", function($rootScope, MachiRest, $timeout, DelayImpl) {
     return DelayImpl($rootScope, MachiRest, $timeout, "cinema-entry");
   })
+
   .factory("AwaginDelay", function($rootScope, MachiRest, $timeout, DelayImpl) {
     return DelayImpl($rootScope, MachiRest, $timeout, "awagin");
   })
+  .factory("Awagin2Delay", function($rootScope, MachiRest, $timeout, DelayImpl) {
+    return DelayImpl($rootScope, MachiRest, $timeout, "awagin2");
+  })
+
   .factory("CorneDelay", function($rootScope, MachiRest, $timeout, DelayImpl) {
     return DelayImpl($rootScope, MachiRest, $timeout, "corne");
   })

@@ -17,19 +17,18 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="css/00.reset.css">
   <link rel="stylesheet" href="css/01.impress.css">
+  <link rel="stylesheet" href="css/sideviewContainer.css">
   <link rel="stylesheet" href="css/slideContainer.css">
   <link rel="stylesheet" href="css/telop.css">
   <link rel="stylesheet" href="css/parts/notice.css">
   <link rel="stylesheet" href="css/parts/octicons.css">
   <link rel="stylesheet" href="css/parts/signals.css">
-  <link rel="stylesheet" href="css/sideview/bizan.css">
   <link rel="stylesheet" href="css/sideview/impl.css">
-  <link rel="stylesheet" href="css/sideview/ryogoku.css">
-  <link rel="stylesheet" href="css/sideview/shinmachi.css">
   <link rel="stylesheet" href="css/sideview/sideviews.css">
   <link rel="stylesheet" href="css/steps/_fullsize.css">
   <link rel="stylesheet" href="css/steps/_slide.css">
   <link rel="stylesheet" href="css/steps/_step.css">
+  <link rel="stylesheet" href="css/steps/awagin.css">
   <link rel="stylesheet" href="css/steps/bizan.css">
   <link rel="stylesheet" href="css/steps/museum.css">
   <link rel="stylesheet" href="css/steps/overview.css">
@@ -37,6 +36,7 @@
   <link rel="stylesheet" href="css/steps/ryogoku.css">
   <link rel="stylesheet" href="css/steps/shinmachi.css">
   <link rel="stylesheet" href="css/steps/traffic.css">
+  <link rel="stylesheet" href="css/type/markdown.css">
   <!-- endinject -->
   <!-- endbuild -->
 
@@ -67,11 +67,15 @@
 
 </div>
 
-<ng-include src="'./partials/telop.html'"></ng-include>
-<ng-include src="'./partials/sideview/bizan.html'"></ng-include>
-<ng-include src="'./partials/sideview/shinmachi.html'"></ng-include>
-<!--<ng-include src="'./partials/sideview/ryogoku.html'"></ng-include>-->
+<div id="sideview-container">
+  <!--<ng-include src="'./partials/sideview/bizan.html'"></ng-include>-->
+  <ng-include src="'./partials/sideview/shinmachi.html'"></ng-include>
+  <ng-include src="'./partials/sideview/ryogoku.html'"></ng-include>
+  <!--<ng-include src="'./partials/sideview/awagin1.html'"></ng-include>-->
+  <!--<ng-include src="'./partials/sideview/awagin2.html'"></ng-include>-->
+</div>
 
+<ng-include src="'./partials/telop.html'"></ng-include>
 
 <!-- build:vendorjs -->
 <!-- bower:js -->

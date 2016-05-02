@@ -1,10 +1,8 @@
 .telop-place {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 660px;
     height: 490px;
 
+    box-sizing: border-box;
     background: #FFFFFF;
 }
 

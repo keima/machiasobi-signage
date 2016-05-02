@@ -1,7 +1,7 @@
 <div ng-class="{
     'slide':     step.id !== 'overview',
     'steps-overview': step.id === 'overview'
-}">
+}" class="{{ step.type }}">
   <h1 ng-if="step.showTitle" ng-bind-html="step.title"></h1>
   <div ng-if="step.type === 'html' && step.description" ng-bind-html="step.description | htmlTrusted"></div>
   <div ng-if="step.type === 'markdown' && step.content" ng-bind-html="step.content | htmlTrusted"></div>

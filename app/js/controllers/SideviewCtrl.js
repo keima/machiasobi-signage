@@ -64,11 +64,15 @@ angular.module('myApp.controller')
   .controller("CinemaSideviewCtrl", function (SideviewImpl, $scope, myMoment, Calendar, PlacesValue, CinemaDelay) {
     SideviewImpl(this, $scope, myMoment, Calendar, PlacesValue.CINEMA, CinemaDelay)
   })
+  .controller("CorneSideviewCtrl", function (SideviewImpl, $scope, myMoment, Calendar, PlacesValue, CorneDelay) {
+    SideviewImpl(this, $scope, myMoment, Calendar, PlacesValue.CORNE, CorneDelay)
+  })
+
   .controller("AwaginSideviewCtrl", function (SideviewImpl, $scope, myMoment, Calendar, PlacesValue, AwaginDelay) {
     SideviewImpl(this, $scope, myMoment, Calendar, PlacesValue.AWAGIN, AwaginDelay)
   })
-  .controller("CorneSideviewCtrl", function (SideviewImpl, $scope, myMoment, Calendar, PlacesValue, CorneDelay) {
-    SideviewImpl(this, $scope, myMoment, Calendar, PlacesValue.CORNE, CorneDelay)
+  .controller("Awagin2SideviewCtrl", function (SideviewImpl, $scope, myMoment, Calendar, PlacesValue, Awagin2Delay) {
+    SideviewImpl(this, $scope, myMoment, Calendar, PlacesValue.AWAGIN2, Awagin2Delay)
   })
 
   .controller("PoppoSideviewCtrl", function (SideviewImpl, $scope, myMoment, Calendar, PlacesValue) {

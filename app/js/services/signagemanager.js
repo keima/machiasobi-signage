@@ -4,7 +4,7 @@ angular.module('myApp.service')
   .factory("SignageManager", function ($q,
                                        Steps,
                                        ShinmachiDelay, RyogokuDelay, BizanDelay,
-                                       CinemaDelay, AwaginDelay, CorneDelay,
+                                       CinemaDelay, AwaginDelay, Awagin2Delay, CorneDelay,
 
                                        MuseumTraffic,
                                        RopewayInboundTraffic, RopewayOutboundTraffic,
@@ -20,6 +20,7 @@ angular.module('myApp.service')
 
           CinemaDelay.fetch(),
           AwaginDelay.fetch(),
+          Awagin2Delay.fetch(),
           CorneDelay.fetch(),
 
           MuseumTraffic.fetch(),
