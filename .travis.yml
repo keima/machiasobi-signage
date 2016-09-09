@@ -1,0 +1,34 @@
+sudo: false
+language: node_js
+node_js:
+  - "4.1.1"
+before_install:
+  - npm install -g bower gulp
+install:
+  - npm install
+  - bower install
+script:
+  - gulp build
+deploy:
+  - provider: gcs
+    access_key_id:
+      secure: "j2s5F+DTjG1WsMbdFxxNUoLmJEjdZcR2/PgqySYyWfy87ETFsc8c94aNUHGJo2BGXmpsD4KOIUCvm0Ik26X6gc5JAt3qfO/whEuRAoNpyPvdgtzikbru7bv7QcGaMy+iwW6/mEaF/3y4Qs/YIkPbBwj/Ou2NaIdvJuVvDXzwNo4="
+    secret_access_key:
+      secure: "hVgacu4I0To1ADIfh5czdtLPWB3/eDOud/WNc8KLBMZmw79X56FOIRolQe93ttM0xsFUC6houAznQMfDzDbHdZE/L4cArE/t6gQsjYkzveUdpprK/McbznToepnJF+Pt6iYO17IsL86Vvcm/NPrFCiOrHKwxr+H4R1twMW8julQ="
+    bucket: machiasobi-signage
+    local-dir: dist
+    skip_cleanup: true
+    edge: true
+    on:
+      branch: release
+  - provider: gcs
+    access_key_id:
+      secure: "j2s5F+DTjG1WsMbdFxxNUoLmJEjdZcR2/PgqySYyWfy87ETFsc8c94aNUHGJo2BGXmpsD4KOIUCvm0Ik26X6gc5JAt3qfO/whEuRAoNpyPvdgtzikbru7bv7QcGaMy+iwW6/mEaF/3y4Qs/YIkPbBwj/Ou2NaIdvJuVvDXzwNo4="
+    secret_access_key:
+      secure: "hVgacu4I0To1ADIfh5czdtLPWB3/eDOud/WNc8KLBMZmw79X56FOIRolQe93ttM0xsFUC6houAznQMfDzDbHdZE/L4cArE/t6gQsjYkzveUdpprK/McbznToepnJF+Pt6iYO17IsL86Vvcm/NPrFCiOrHKwxr+H4R1twMW8julQ="
+    bucket: machiasobi-signage-preview
+    local-dir: dist
+    skip_cleanup: true
+    edge: true
+    on:
+      branch: master
