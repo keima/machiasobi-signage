@@ -1,4 +1,4 @@
-import {SYNC_DATE} from "../actions/clock"
+import {SYNC_DATE} from "../actions/"
 import {parseTime} from "../utils/dates"
 
 const initialState = parseTime(new Date());

@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
-import * as Actions from "../actions/clock";
+import * as Actions from "../actions/";
 import Clock from "../components/Clock"
 
 @connect(
@@ -12,6 +12,7 @@ import Clock from "../components/Clock"
 export default class App extends Component {
   static propTypes = {
     syncDate: PropTypes.func.isRequired,
+    appInitialize: PropTypes.func.isRequired,
     time: PropTypes.shape({
       hour: PropTypes.number.isRequired,
       minutes: PropTypes.number.isRequired,
@@ -20,6 +21,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
+    this.props.appInitialize();
     this.timer = setInterval(this.props.syncDate, 1000)
   }
 
