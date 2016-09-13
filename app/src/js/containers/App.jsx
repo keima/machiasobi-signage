@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 
 import * as Actions from "../actions/";
 import Clock from "../components/Clock"
+import Telop from "../components/Telop"
 
 @connect(
   state => ({time: state.clock}),
@@ -12,7 +13,7 @@ import Clock from "../components/Clock"
 export default class App extends Component {
   static propTypes = {
     syncDate: PropTypes.func.isRequired,
-    appInitialize: PropTypes.func.isRequired,
+    fetchInitialData: PropTypes.func.isRequired,
     time: PropTypes.shape({
       hour: PropTypes.number.isRequired,
       minutes: PropTypes.number.isRequired,
@@ -21,8 +22,8 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    this.props.appInitialize();
-    this.timer = setInterval(this.props.syncDate, 1000)
+    this.props.fetchInitialData();
+    // this.timer = setInterval(this.props.syncDate, 1000)
   }
 
   componentDidUnmount() {
@@ -34,7 +35,7 @@ export default class App extends Component {
       <div>
         {/*<SignageMaster />*/}
         <Clock {...this.props.time} />
-        {/*<Telop />*/}
+        <Telop />
         {/*<Loadingindicator />*/}
       </div>
     )

@@ -1,5 +1,5 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: `${__dirname}/src/js/index.jsx`,
@@ -15,6 +15,7 @@ module.exports = {
       }
     ]
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -26,4 +27,4 @@ module.exports = {
   resolve: {
     extensions: ['', '.jsx', '.js']
   }
-}
+};

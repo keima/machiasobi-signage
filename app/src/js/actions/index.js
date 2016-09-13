@@ -1,5 +1,6 @@
 import axios from "axios";
 import {parseTime} from "../utils/dates";
+import {weatherTelop} from "../utils/telops";
 
 /* 開発メモ
  * "_RUNNING" : データ取得を開始したのを通知
@@ -20,17 +21,11 @@ export function syncDate() {
   };
 }
 
-export const APP_INITIALIZE = "APP_INITIALIZE";
-export function appInitialize() {
-  return {
-    type: APP_INITIALIZE
-  }
-}
-
 export const REQUEST_RUNNING = "REQUEST_RUNNING";
-function requestRunning() {
+function requestRunning(...fetchName) {
   return {
-    type: REQUEST_RUNNING
+    type: REQUEST_RUNNING,
+    sources: fetchName
   }
 }
 
@@ -48,22 +43,34 @@ function telopSuccess(telop) {
   return {
     type: TELOP_SUCCESS,
     receivedAt: Date.now(),
-    telop
+    telops: [telop]
+  }
+}
+
+export const TELOP_ROTATE_FORWARD = "TELOP_ROTATE_FORWARD";
+function telopRotateForward() {
+  return {
+    type: TELOP_ROTATE_FORWARD
   }
 }
 
 export function fetchInitialData() {
   return function(dispatch) {
+
     dispatch(requestRunning());
 
     return axios.all([
       api.get("steps"),
       api.get("weather/360010")
     ]).then(axios.spread(function(steps, weatherInfo) {
-      console.log(steps);
-
-      dispatch(stepsSuccess(steps));
-      dispatch(telopSuccess(weatherInfo))
-    }))
+      dispatch(stepsSuccess(steps.data));
+      dispatch(telopSuccess(weatherTelop(weatherInfo.data)))
+    })).catch( err => {
+      if (err.response) {
+        console.log(err.response.status, err.response.data);
+      } else {
+        console.log("---", err.message)
+      }
+    });
   }
 }
