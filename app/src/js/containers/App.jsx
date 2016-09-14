@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import * as Actions from "../actions/";
 import Clock from "../components/Clock"
 import Telop from "../components/Telop"
+import Marquee from "../libraries/Marquee"
 
 @connect(
   state => ({time: state.clock}),
@@ -34,9 +35,19 @@ export default class App extends Component {
     return (
       <div>
         {/*<SignageMaster />*/}
-        <Clock {...this.props.time} />
-        <Telop />
+        {/*<Clock {...this.props.time} />*/}
+        {/*<Telop />*/}
         {/*<Loadingindicator />*/}
+        <Marquee
+          text={"The quick brown fox jumps over the lazy dog." +
+          "The quick brown fox jumps over the lazy dog." +
+          "The quick brown fox jumps over the lazy dog."}
+          hoverToStop={true}
+          loop={true}
+          leading={5000} // TODO: leading are not apply every time
+          trailing={5000}
+          callback={() => {console.log("Live marquee!")}}
+        />
       </div>
     )
   }
