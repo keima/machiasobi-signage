@@ -6,6 +6,7 @@ import * as Actions from "../actions/";
 import Clock from "../components/Clock"
 import Telop from "../components/Telop"
 import Marquee from "../libraries/Marquee"
+import Marquee2 from "../libraries/Marquee2"
 
 @connect(
   state => ({time: state.clock}),
@@ -38,14 +39,14 @@ export default class App extends Component {
         {/*<Clock {...this.props.time} />*/}
         {/*<Telop />*/}
         {/*<Loadingindicator />*/}
-        <Marquee
+        <Marquee2
           text={"The quick brown fox jumps over the lazy dog." +
           "The quick brown fox jumps over the lazy dog." +
           "The quick brown fox jumps over the lazy dog."}
           hoverToStop={true}
           loop={true}
-          leading={5000} // TODO: leading are not apply every time
-          trailing={5000}
+          leading={2000} // TODO: leading are not apply every time
+          trailing={2000}
           callback={() => {console.log("Live marquee!")}}
         />
       </div>
