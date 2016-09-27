@@ -23,6 +23,16 @@ export default class App extends Component {
     })
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      marquee: {
+        text: "",
+
+      }
+    }
+  }
+
   componentDidMount() {
     this.props.fetchInitialData();
     // this.timer = setInterval(this.props.syncDate, 1000)
@@ -32,6 +42,11 @@ export default class App extends Component {
     clearInterval(this.timer)
   }
 
+  _onChangeText(e) {
+    console.log(e.target)
+    this.setState({marquee: {text: e.target.value}});
+  }
+
   render() {
     return (
       <div>
@@ -39,15 +54,12 @@ export default class App extends Component {
         {/*<Clock {...this.props.time} />*/}
         {/*<Telop />*/}
         {/*<Loadingindicator />*/}
+        <input type="text" value={this.state.marquee.text} onChange={this._onChangeText.bind(this)}/>
         <Marquee2
-          text={"The quick brown fox jumps over the lazy dog." +
-          "The quick brown fox jumps over the lazy dog." +
-          "The quick brown fox jumps over the lazy dog."}
-          hoverToStop={true}
-          loop={true}
-          leading={2000} // TODO: leading are not apply every time
+          text={this.state.marquee.text}
+          leading={2000}
           trailing={2000}
-          callback={() => {console.log("Live marquee!")}}
+          callback={() => {console.log("Live marquee!")} }
         />
       </div>
     )

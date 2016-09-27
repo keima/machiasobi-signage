@@ -5,7 +5,6 @@ export default class Marquee2 extends Component {
 
   static propTypes = {
     text: PropTypes.string,
-    loop: PropTypes.bool,
     leading: PropTypes.number,
     trailing: PropTypes.number,
     className: PropTypes.string,
@@ -14,7 +13,6 @@ export default class Marquee2 extends Component {
 
   static defaultProps = {
     text: "",
-    loop: false,
     leading: 0,
     trailing: 0
   };
