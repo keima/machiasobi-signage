@@ -1,55 +1,47 @@
-/**
- * https://github.com/jasonslyvia/react-marquee
- * + requestAnimationFrame
- */
+import React, {Component, PropTypes} from 'react';
+import ReactDOM from 'react-dom'
 
-import React, {PropTypes} from 'react';
-import ReactDOM from 'react-dom';
+export default class Marquee extends Component {
 
-const FPS = 30; // 60
-const STEP = 1; // 1
-const TIMEOUT = 1 / FPS * 1000;
-
-const Marquee = React.createClass({
-  propTypes: {
+  static propTypes = {
     text: PropTypes.string,
-    loop: PropTypes.bool,
     leading: PropTypes.number,
     trailing: PropTypes.number,
     className: PropTypes.string,
     callback: PropTypes.func
-  },
+  };
 
-  getDefaultProps() {
-    return {
-      text: '',
-      loop: false,
-      leading: 0,
-      trailing: 0
-    };
-  },
+  static defaultProps = {
+    text: "",
+    leading: 0,
+    trailing: 0
+  };
 
-  getInitialState() {
-    return {
-      startTime: 0,
+  constructor(props) {
+    super(props);
+    this.state = {
+      startTime: Date.now(),
       animatedWidth: 0,
-      overflowWidth: 0
-    };
-  },
+      scrollWidth: 0,
+    }
+  }
 
   componentDidMount() {
     this._measureText();
-    this._startAnimation();
-  },
+    this._initializeAnimation();
+  }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return false;
+  // }
 
   componentDidUpdate() {
     this._measureText();
-    this._startAnimation();
-  },
+  }
 
   componentWillUnmount() {
-    cancelAnimationFrame(this._marqueeTimer);
-  },
+    cancelAnimationFrame(this.animationId);
+  }
 
   render() {
     const style = {
@@ -63,91 +55,75 @@ const Marquee = React.createClass({
         <span ref="text" style={style} title={this.props.text}>{this.props.text}</span>
       </div>
     );
-  },
+  }
 
-  _startAnimation() {
-    console.log("start animation")
 
-    cancelAnimationFrame(this._marqueeTimer);
-    const isLeading = this.state.animatedWidth === 0;
+  _initializeAnimation() {
+
+    const VELOCITY_PER_SEC = 60; // small then slow
+
+    cancelAnimationFrame(this.animationId);
+
+    console.log(this.state.startTime)
     if (!this.state.startTime) {
-      this.setState({ startTime: Date.now() })
+      this.setState({startTime: Date.now()})
     }
 
-    var callback = this.props.callback;
+    const step = () => {
+      const lastTime = Date.now();
+      const {startTime, scrollWidth} = this.state;
+      const {leading, trailing} = this.props;
+      var animatedWidth = 0;
 
-    const animate = () => {
-      console.log("animate");
+      const delta = lastTime - startTime;
+      const scrollDurationTime = scrollWidth * 1000 / VELOCITY_PER_SEC;
 
-      const {startTime, overflowWidth} = this.state;
+      if (delta < leading) {
+        // nothing
+      } else if (delta > leading + trailing + scrollDurationTime) {
+        console.log(lastTime, startTime, delta, leading, trailing, scrollDurationTime);
 
-      let lastTime = Date.now();
-
-      // 時間差分(⊿t) / 1fpsあたり時間 を 全体フレーム数 で 割った余り = いまどこか
-      let animatedWidth = Math.floor( (lastTime - startTime) / (1000 / FPS) % overflowWidth );
-//        this.state.animatedWidth + STEP;
-
-      const isRoundOver = animatedWidth > overflowWidth;
-
-      if (isRoundOver) {
-        if (callback) {
-          callback();
-          callback = null;
+        if (this.props.callback) {
+          this.props.callback();
         }
 
-        if (this.props.loop) {
-          animatedWidth = 0;
-        }
-        else {
-          return;
-        }
-      }
-
-      if (isRoundOver && this.props.trailing) {
-        setTimeout(() => {
-          this.setState({
-            animatedWidth
-          });
-
-          this._marqueeTimer = requestAnimationFrame(animate);
-        }, this.props.trailing);
-      }
-      else {
         this.setState({
-          animatedWidth
+          startTime: Date.now()
         });
-
-        this._marqueeTimer = requestAnimationFrame(animate);
+      } else if (delta > leading + scrollDurationTime) {
+        animatedWidth = scrollWidth;
+      } else {
+        animatedWidth = Math.floor( (delta - leading) * ( VELOCITY_PER_SEC / 1000 ) );
       }
+
+      this.setState({
+        animatedWidth
+      });
+
+      this.animationId = requestAnimationFrame(step);
     };
 
-    if (isLeading) {
-      setTimeout(() => {
-        requestAnimationFrame(animate);
-      }, this.props.leading)
-    } else {
-      requestAnimationFrame(animate);
-    }
-  },
+    step();
+
+  }
 
   _measureText() {
     const container = ReactDOM.findDOMNode(this);
     const node = ReactDOM.findDOMNode(this.refs.text);
 
     if (container && node) {
-      const containerWidth = container.offsetWidth;
+      // const containerWidth = container.offsetWidth;
       const textWidth = node.offsetWidth;
 
       // const overflowWidth = textWidth - containerWidth;
-      const overflowWidth = textWidth;
+      const scrollWidth = textWidth;
 
-      if (overflowWidth !== this.state.overflowWidth) {
+      if (scrollWidth !== this.state.scrollWidth) {
         this.setState({
-          overflowWidth
+          scrollWidth
         });
       }
     }
   }
-});
 
-module.exports = Marquee;
+}

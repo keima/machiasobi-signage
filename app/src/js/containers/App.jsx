@@ -4,12 +4,15 @@ import {connect} from "react-redux";
 
 import * as Actions from "../actions/";
 import Clock from "../components/Clock"
-import Telop from "../components/Telop"
-import Marquee from "../libraries/Marquee"
-import Marquee2 from "../libraries/Marquee2"
+import Telop from "../containers/Telop"
+import SignageMaster from "../containers/SignageMaster"
 
 @connect(
-  state => ({time: state.clock}),
+  state => ({
+    time: state.clock,
+    telop: state.telop,
+    slide: state.slide
+  }),
   dispatch => bindActionCreators(Actions, dispatch)
 )
 export default class App extends Component {
@@ -25,12 +28,7 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      marquee: {
-        text: "",
-
-      }
-    }
+    this.state = {}
   }
 
   componentDidMount() {
@@ -42,25 +40,13 @@ export default class App extends Component {
     clearInterval(this.timer)
   }
 
-  _onChangeText(e) {
-    console.log(e.target)
-    this.setState({marquee: {text: e.target.value}});
-  }
-
   render() {
     return (
       <div>
-        {/*<SignageMaster />*/}
+        <SignageMaster  />
         {/*<Clock {...this.props.time} />*/}
-        {/*<Telop />*/}
+        <Telop />
         {/*<Loadingindicator />*/}
-        <input type="text" value={this.state.marquee.text} onChange={this._onChangeText.bind(this)}/>
-        <Marquee2
-          text={this.state.marquee.text}
-          leading={2000}
-          trailing={2000}
-          callback={() => {console.log("Live marquee!")} }
-        />
       </div>
     )
   }
