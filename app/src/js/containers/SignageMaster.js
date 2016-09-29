@@ -3,6 +3,8 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
 import * as Actions from "../actions/";
+import Slideshow from "./Slideshow"
+import SideView from "./SideView"
 
 @connect(
   state => ({
