@@ -5,7 +5,7 @@ import Marquee from "../libraries/Marquee"
 
 @connect(
   state => ({
-    telop: state.telop.items,
+    items: state.telop.items,
     selectPos: state.telop.selectPos
   })
 )
@@ -21,7 +21,7 @@ export default class Telop extends Component {
 
   render() {
     let {items} = this.props;
-    var message = items[0] || "";
+    var message = items[0];
 
     return (
       <Marquee
