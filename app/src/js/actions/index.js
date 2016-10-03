@@ -9,7 +9,7 @@ import {weatherTelop} from "../utils/telops";
  */
 
 var api = axios.create({
-  baseURL: "http://machiasobi-tools.appspot.com/api/v1/"
+  baseURL: "https://machiasobi-tools.appspot.com/api/v1/"
 });
 
 export const SYNC_DATE = "SYNC_DATE";
