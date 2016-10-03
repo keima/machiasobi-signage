@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('myApp.constant', [])
-  .value("API_ENDPOINT", "http://machiasobi-tools.appspot.com")
+  .value("API_ENDPOINT", "https://machiasobi-tools.appspot.com")
   //.value("API_ENDPOINT", "http://localhost:8080")
   .value("PlacesValue", {
     SHINMACHI: {

@@ -15,7 +15,6 @@ angular.module('myApp.controller')
 
       //var time = moment.subtract(resp.delay, "minutes");
       var time = myMoment().subtract(delay, "minutes");
-      console.log(time);
 
       Calendar.getTodayData(places.calendarId, time)
         .then(function (_result) {
