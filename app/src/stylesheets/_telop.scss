@@ -1,0 +1,43 @@
+// telop module
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.telop {
+  position: fixed;
+  @include telopPos;
+
+  width: $telopWidth;
+  height: $telopHeight;
+
+  color: #ffffff;
+  background-color: #000000;
+
+  font-size: 60px;
+  line-height: 100px;
+
+  &__marquee {
+    span {
+      padding-left: 30px;
+    }
+
+    // ここはライブラリ内なのでBEMで表現不能
+    &.leading {
+      animation-duration: 800ms;
+      animation-timing-function: ease-out;
+      animation-name: fade-in;
+    }
+    &.scrolling {
+
+    }
+    &.trailing {
+
+    }
+  }
+}

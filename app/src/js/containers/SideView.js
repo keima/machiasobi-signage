@@ -2,7 +2,7 @@ import React from "react"
 
 const SideView = (props) =>{
   return (
-    <div>
+    <div className="sideView">
       TBD... sideview!
     </div>
   )

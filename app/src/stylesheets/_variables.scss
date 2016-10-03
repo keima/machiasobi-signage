@@ -1,0 +1,26 @@
+$screenWidth: 1920px;
+$screenHeight: 1080px;
+
+$telopWidth: 100%;
+$telopHeight: 100px;
+
+$slideshowWidth: 1260px;
+$slideshowHeight: $screenHeight - $telopHeight;
+
+$sideViewWidth: $screenWidth - $slideshowWidth;
+$sideViewHeight: $slideshowHeight;
+
+@mixin slideshowPos {
+  top: 0;
+  left: $sideViewWidth;
+}
+
+@mixin sideViewPos {
+  top: 0;
+  left: 0;
+}
+
+@mixin telopPos {
+  left: 0;
+  bottom: 0;
+}

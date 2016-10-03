@@ -1,4 +1,9 @@
 // @imoort "hoge" -> import _hoge.scss
+@import "../../node_modules/normalize-scss/sass/normalize/import-now";
 
-@import "../../node_modules/normalize-scss/sass/normalize";
-
+@import "variables";
+@import "core";
+@import "telop";
+@import "signageMaster";
+@import "slideshow";
+@import "sideView";

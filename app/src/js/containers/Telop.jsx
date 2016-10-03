@@ -1,7 +1,6 @@
-import React, {Component, PropTypes} from "react"
+import React, {Component, PropTypes} from "react";
 import {connect} from "react-redux";
-
-import Marquee from "../libraries/Marquee"
+import Marquee from "../libraries/Marquee";
 
 @connect(
   state => ({
@@ -24,14 +23,18 @@ export default class Telop extends Component {
     var message = items[0];
 
     return (
-      <Marquee
-        text={message}
-        leading={2000}
-        trailing={2000}
-        callback={() => {
-          console.log("Live marquee!")
-        } }
-      />
+      <div className="telop">
+        <Marquee
+          text={message}
+          className={"telop__marquee"}
+          velocity={300}
+          leading={2000}
+          trailing={2000}
+          callback={() => {
+            console.log("Live marquee!")
+          } }
+        />
+      </div>
     )
   }
 

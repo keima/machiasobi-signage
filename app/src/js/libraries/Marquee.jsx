@@ -1,10 +1,18 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom'
 
+const AnimStatus = {
+  STANDBY: "standby",
+  LEADING: "leading",
+  SCROLLING: "scrolling",
+  TRAILING: "trailing"
+};
+
 export default class Marquee extends Component {
 
   static propTypes = {
     text: PropTypes.string,
+    velocity: PropTypes.number,
     leading: PropTypes.number,
     trailing: PropTypes.number,
     className: PropTypes.string,
@@ -13,8 +21,10 @@ export default class Marquee extends Component {
 
   static defaultProps = {
     text: "",
+    velocity: 120,
     leading: 0,
-    trailing: 0
+    trailing: 0,
+    className: ""
   };
 
   constructor(props) {
@@ -23,6 +33,7 @@ export default class Marquee extends Component {
       startTime: Date.now(),
       animatedWidth: 0,
       scrollWidth: 0,
+      animationStatus: AnimStatus.STANDBY
     }
   }
 
@@ -51,7 +62,8 @@ export default class Marquee extends Component {
     };
 
     return (
-      <div className={`ui-marquee ${this.props.className}`} style={{overflow: 'hidden'}}>
+      <div className={`ui-marquee ${this.props.className} ${this.state.animationStatus}`}
+           style={{overflow: 'hidden'}}>
         <span ref="text" style={style} title={this.props.text}>{this.props.text}</span>
       </div>
     );
@@ -59,12 +71,8 @@ export default class Marquee extends Component {
 
 
   _initializeAnimation() {
-
-    const VELOCITY_PER_SEC = 60; // small then slow
-
     cancelAnimationFrame(this.animationId);
 
-    console.log(this.state.startTime)
     if (!this.state.startTime) {
       this.setState({startTime: Date.now()})
     }
@@ -72,17 +80,17 @@ export default class Marquee extends Component {
     const step = () => {
       const lastTime = Date.now();
       const {startTime, scrollWidth} = this.state;
-      const {leading, trailing} = this.props;
+      const {leading, trailing, velocity} = this.props;
+
+      var animationStatus = AnimStatus.LEADING;
       var animatedWidth = 0;
 
       const delta = lastTime - startTime;
-      const scrollDurationTime = scrollWidth * 1000 / VELOCITY_PER_SEC;
+      const scrollDurationTime = scrollWidth * 1000 / velocity;
 
       if (delta < leading) {
-        // nothing
+        animationStatus = AnimStatus.LEADING
       } else if (delta > leading + trailing + scrollDurationTime) {
-        console.log(lastTime, startTime, delta, leading, trailing, scrollDurationTime);
-
         if (this.props.callback) {
           this.props.callback();
         }
@@ -91,12 +99,15 @@ export default class Marquee extends Component {
           startTime: Date.now()
         });
       } else if (delta > leading + scrollDurationTime) {
+        animationStatus = AnimStatus.TRAILING;
         animatedWidth = scrollWidth;
       } else {
-        animatedWidth = Math.floor( (delta - leading) * ( VELOCITY_PER_SEC / 1000 ) );
+        animationStatus = AnimStatus.SCROLLING;
+        animatedWidth = Math.floor( (delta - leading) * ( velocity / 1000 ) );
       }
 
       this.setState({
+        animationStatus,
         animatedWidth
       });
 

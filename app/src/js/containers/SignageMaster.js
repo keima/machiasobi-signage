@@ -24,7 +24,7 @@ export default class SignageMaster extends Component {
 
   render() {
     return (
-      <div>
+      <div className="signageMaster">
         <Slideshow items={this.props.items} />
         <SideView items={[]} />
       </div>

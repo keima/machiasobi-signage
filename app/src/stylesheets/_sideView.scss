@@ -1,0 +1,8 @@
+.sideView {
+  position: fixed;
+  @include sideViewPos;
+  width: $sideViewWidth;
+  height: $sideViewHeight;
+
+  background: #CCCCFF;
+}

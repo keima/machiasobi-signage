@@ -1,11 +1,19 @@
-import React from "react"
+import React, {Component, PropTypes} from "react";
 
-const Slideshow = (props) =>{
-  return (
-    <div>
-      TBD... slideshow.
-    </div>
-  )
+export default class Slideshow extends Component {
+  static propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object).isRequired
+  };
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className="slideshow">
+        TBD... slideshow.
+      </div>
+    )
+  }
 }
-
-export default Slideshow

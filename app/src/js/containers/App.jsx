@@ -3,7 +3,6 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
 import * as Actions from "../actions/";
-import Clock from "../components/Clock"
 import Telop from "../containers/Telop"
 import SignageMaster from "../containers/SignageMaster"
 
@@ -43,7 +42,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <SignageMaster  />
+        <SignageMaster />
         {/*<Clock {...this.props.time} />*/}
         <Telop />
         {/*<Loadingindicator />*/}

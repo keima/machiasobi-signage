@@ -1,0 +1,8 @@
+.slideshow {
+  position: fixed;
+  @include slideshowPos;
+  width: $slideshowWidth;
+  height: $slideshowHeight;
+
+  background: #CCFFCC;
+}
