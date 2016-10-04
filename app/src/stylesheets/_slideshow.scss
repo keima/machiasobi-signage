@@ -4,5 +4,31 @@
   width: $slideshowWidth;
   height: $slideshowHeight;
 
-  background: #CCFFCC;
+  background: #CCFFCC; //#D7D7D7
+
+  &__progressBar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 25px;
+    background: #000;
+
+    text-align: center;
+    z-index: 100;
+  }
+
+  &__progressBarText {
+    color: #888;
+    position: absolute;
+    text-align: center;
+    z-index: 102;
+  }
+
+  &__progressBarLiquid {
+    height: 25px;
+    background: #FFF;
+    z-index: 101;
+  }
 }

@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from "react";
 import ReactDOM from 'react-dom'
 
+import Slide_TitleLogo from "../components/Slide_TitleLogo"
+
 export default class Slideshow extends Component {
   static propTypes = {
     items: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -50,10 +52,11 @@ export default class Slideshow extends Component {
 
     return (
       <div className="slideshow">
-        <pre>{JSON.stringify(item, null, 2) }</pre>
+        {/*<pre>{JSON.stringify(item, null, 2) }</pre>*/}
+        <Slide_TitleLogo />
 
         <div ref="progressBar" className="slideshow__progressBar">
-          { this.state.index }
+          <span className="slideshow__progressBarText">{ this.state.index + 1 } / { this.props.items.length }</span>
           <div ref="progressBar__liquid" className="slideshow__progressBarLiquid" style={style}></div>
         </div>
       </div>
@@ -96,17 +99,17 @@ export default class Slideshow extends Component {
       const {duration} = this.props;
 
       const delta = lastTime - startTime;
-      const scrollDurationTime = progressWidth * 1000 / duration;
+      // const duration = 0 // progressWidth * 1000 / duration;
 
       var liquidWidth = 0;
 
-      if (delta > scrollDurationTime) {
+      if (delta > duration) {
         this._pageNext();
 
         liquidWidth = progressWidth;
         this.setState({startTime: Date.now()})
       } else {
-        liquidWidth = Math.floor(delta * duration / 1000);
+        liquidWidth = Math.floor(delta * progressWidth / duration);
       }
 
       this.setState({liquidWidth});
