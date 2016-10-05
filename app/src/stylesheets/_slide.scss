@@ -6,8 +6,10 @@
   left: 0;
   right: 0;
 
+  box-sizing: border-box;
   width: 1080px;
   height: 810px;
+  padding: 40px 60px;
 
   border: 1px solid #b4b4b4;
   border-radius: 10px;
@@ -18,9 +20,15 @@
   font-size: 30px;
   line-height: 1.5;
 
+  h1 {
+    font-size: 60px;
+    font-weight: 800;
+    margin: 0 0 20px;
+    letter-spacing: .2em;
+  }
+
   @at-root {
     &__titleLogo {
-
       img {
         width: 60%;
 
@@ -36,6 +44,149 @@
     &--noFrame {
       border: none;
       background: none;
+      padding: 0;
+    }
+
+    &__stageEvent {
+
+      dl {
+        width: 100%;
+      }
+
+      &__placeName {
+      }
+      &__timeScore {
+        width: 100%;
+        height: 240px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+
+        @at-root {
+          &--delayed {
+            background-color: $delayColor;
+          }
+
+          &--ontime {
+            background-color: $onTimeColor;
+          }
+
+          &--haste {
+            background-color: $hasteColor;
+          }
+        }
+
+        &__time {
+          width: 320px;
+          height: 100%;
+
+          float: left;
+
+          font-size: 100px;
+          text-align: center;
+          font-weight: 900;
+          line-height: 175px;
+
+          div {
+            margin: 25px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+          }
+
+          span {
+            font-size: 60px;
+            font-weight: 500;
+            margin-left: 0.12em;
+            margin-bottom: 0.3em;
+          }
+        }
+
+        &__information {
+          height: 100%;
+          margin-left: 320px;
+          //float: right;
+
+          background: rgba(255, 255, 255, 0.75);
+
+          padding-left: 20px;
+
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 10px;
+        }
+
+        &__status {
+          box-sizing: border-box;
+
+          height: 105px;
+
+          padding-top: 25px;
+
+          font-size: 60px;
+          line-height: 63px;
+          font-weight: 600;
+        }
+
+        &__message {
+          height: 100px;
+
+          font-size: 40px;
+          line-height: 43px;
+          font-weight: 500;
+
+          overflow: hidden;
+        }
+
+        &__caution {
+          height: 35px;
+
+          font-size: 30px;
+          line-height: 35px;
+          font-weight: 300;
+          text-align: right;
+        }
+
+      }
+      &__timeTable {
+        box-sizing: border-box;
+        height: 360px;
+        background: rgba(255,255,255,0.5);
+        border-radius: 10px;
+        padding: 15px;
+
+        &__index {
+          float: left;
+
+          width: 100px;
+          height: 30px;
+
+          font-size: 28px;
+          font-weight: 600;
+          line-height: 30px;
+        }
+        &__dateTime {
+          float:right;
+          text-align: right;
+
+          width: 500px;
+          height: 30px;
+
+          font-size: 28px;
+          font-weight: 600;
+          line-height: 30px;
+        }
+        &__summary {
+          clear:both;
+
+          height: 80px;
+
+          font-size: 40px;
+          font-weight: 400;
+          line-height: 80px;
+
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
     }
 
 

@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from "react";
 import ReactDOM from 'react-dom'
 
 import Slide_TitleLogo from "../components/Slide_TitleLogo"
+import Slide_StageEvent from "../components/Slide_StageEvent"
 
 export default class Slideshow extends Component {
   static propTypes = {
@@ -11,7 +12,7 @@ export default class Slideshow extends Component {
 
   static defaultProps = {
     items: [],
-    duration: 2000
+    duration: 5000
   };
 
   constructor(props) {
@@ -22,6 +23,7 @@ export default class Slideshow extends Component {
       startTime: 0,
       progressWidth: 0,
       liquidWidth: 0,
+      animationCount: 0,
     }
   }
 
@@ -37,26 +39,50 @@ export default class Slideshow extends Component {
 
 
   render() {
+    const {index, liquidWidth, animationCount, progressWidth} = this.state;
+
     let item;
     if (this.props.items.length == 0) {
       item = null;
     } else {
-      item = this.props.items[this.state.index];
+      item = this.props.items[index];
     }
 
-    const style = {
+    // TODO: アニメーションの見直し
+    var style = {
       "position": "relative",
-      "right": 0,
-      "width": this.state.liquidWidth
+      "width": animationCount % 2 ? progressWidth - liquidWidth : liquidWidth
     };
+    style[animationCount % 2 ? "right" : "left"] = 0;
 
     return (
       <div className="slideshow">
         {/*<pre>{JSON.stringify(item, null, 2) }</pre>*/}
-        <Slide_TitleLogo />
+        {/*<Slide_TitleLogo />*/}
+        <Slide_StageEvent
+          placeName={"新町橋東公園"}
+          duration={60}
+          description={"遅れテストますああああああああああああああああああああああああああああ"}
+          events={[
+            {
+              summary: "マヴェルトークショー(てすと)１",
+              start: {
+                dateTime: Date.now()
+              },
+              end: {
+                dateTime: Date.now()
+              }
+            },
+            {
+              summary: "マヴェルトークショー(終日てすと)２",
+              start: {
+                date: Date.now()
+              }
+            }
+          ]} />
 
         <div ref="progressBar" className="slideshow__progressBar">
-          <span className="slideshow__progressBarText">{ this.state.index + 1 } / { this.props.items.length }</span>
+          <span className="slideshow__progressBarText">{ index + 1 } / { this.props.items.length }</span>
           <div ref="progressBar__liquid" className="slideshow__progressBarLiquid" style={style}></div>
         </div>
       </div>
@@ -99,7 +125,6 @@ export default class Slideshow extends Component {
       const {duration} = this.props;
 
       const delta = lastTime - startTime;
-      // const duration = 0 // progressWidth * 1000 / duration;
 
       var liquidWidth = 0;
 
@@ -107,7 +132,10 @@ export default class Slideshow extends Component {
         this._pageNext();
 
         liquidWidth = progressWidth;
-        this.setState({startTime: Date.now()})
+        this.setState({
+          startTime: Date.now(),
+          animationCount: this.state.animationCount + 1
+        })
       } else {
         liquidWidth = Math.floor(delta * progressWidth / duration);
       }
