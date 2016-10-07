@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom'
 
 import Slide_TitleLogo from "../components/Slide_TitleLogo"
 import Slide_StageEvent from "../components/Slide_StageEvent"
+import Slide_WaitTime from "../components/Slide_WaitTime"
+import Slide_Image from "../components/Slide_Image"
+import Slide_Text from "../components/Slide_Text"
 
 export default class Slideshow extends Component {
   static propTypes = {
@@ -59,7 +62,7 @@ export default class Slideshow extends Component {
       <div className="slideshow">
         {/*<pre>{JSON.stringify(item, null, 2) }</pre>*/}
         {/*<Slide_TitleLogo />*/}
-        <Slide_StageEvent
+        {/*<Slide_StageEvent
           placeName={"新町橋東公園"}
           duration={60}
           description={"遅れテストますああああああああああああああああああああああああああああ"}
@@ -79,7 +82,25 @@ export default class Slideshow extends Component {
                 date: Date.now()
               }
             }
-          ]} />
+          ]} />*/}
+        {/*<Slide_WaitTime
+        placeName={"ロープウェイ"}
+        items={[
+          {
+            name: "上り",
+            duration: 10,
+            message: "バスガス爆発ああああああああああああああああああああああああああああ"
+          },
+          {
+            name: "下り",
+            duration: 120
+          }
+        ]}
+        />*/}
+        {/*<Slide_Image
+          src="./images/niku.jpg"
+          />*/}
+        <Slide_Text title={"wow war tonight"} content="咲いた咲いた<u>チューリップ</u>の<del>鼻</del> 花が〜〜〜"/>
 
         <div ref="progressBar" className="slideshow__progressBar">
           <span className="slideshow__progressBarText">{ index + 1 } / { this.props.items.length }</span>

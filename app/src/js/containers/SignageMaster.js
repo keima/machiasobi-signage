@@ -26,7 +26,24 @@ export default class SignageMaster extends Component {
     return (
       <div className="signageMaster">
         <Slideshow items={this.props.items} />
-        <SideView items={[]} />
+        <SideView items={[
+          {
+            name:"テスト場所A",
+            duration: 0
+          },
+          {
+            name:"テスト場所B",
+            duration: -30
+          },
+          {
+            name:"テスト場所C",
+            duration: 30
+          },
+          {
+            name:"テスト場所D",
+            duration: 90
+          },
+        ]} />
       </div>
     );
   }

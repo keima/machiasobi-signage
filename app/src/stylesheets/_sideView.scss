@@ -5,4 +5,50 @@
   height: $sideViewHeight;
 
   background: #CCCCFF;
+
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    flex-grow: 1;
+    box-sizing: border-box;
+
+    border: 1px solid #FFF000;
+    padding-left: 80px;
+
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+      flex-grow: 1;
+      background: #FFFFFF;
+    }
+
+    &__name {
+
+    }
+    &__duration {
+
+    }
+    &__status {
+
+    }
+
+    @at-root {
+      &--haste {
+        background: linear-gradient($hasteColor, $hasteColorL, $hasteColor)
+      }
+      &--ontime {
+        background: linear-gradient($onTimeColor, $onTimeColorL, $onTimeColor)
+      }
+      &--delay {
+        background: linear-gradient($delayColor, $delayColorL, $delayColor)
+      }
+      &--disaster {
+        background: linear-gradient($disasterColor, $disasterColorL, $disasterColor)
+      }
+    }
+
+  }
+
 }

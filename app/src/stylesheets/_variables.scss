@@ -28,6 +28,11 @@ $sideViewHeight: $slideshowHeight;
 
 // color
 
+$disasterColor: #FF0000;
+$disasterColorL: lighten($disasterColor, 80%);
 $delayColor : #FFFF00;
+$delayColorL: lighten($delayColor, 80%);
 $onTimeColor: #9cff6b;
+$onTimeColorL: lighten($onTimeColor, 80%);
 $hasteColor : #49dfff;
+$hasteColorL: lighten($hasteColor, 80%);
