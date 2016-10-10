@@ -2,27 +2,17 @@ import React, {Component, PropTypes} from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
-import * as Actions from "../actions/";
+import * as Actions from "../actions";
 import Telop from "../containers/Telop"
 import SignageMaster from "../containers/SignageMaster"
 
 @connect(
-  state => ({
-    time: state.clock,
-    telop: state.telop,
-    slide: state.slide
-  }),
+  state => ({}),
   dispatch => bindActionCreators(Actions, dispatch)
 )
 export default class App extends Component {
   static propTypes = {
-    syncDate: PropTypes.func.isRequired,
-    fetchInitialData: PropTypes.func.isRequired,
-    time: PropTypes.shape({
-      hour: PropTypes.number.isRequired,
-      minutes: PropTypes.number.isRequired,
-      seconds: PropTypes.number.isRequired
-    })
+    fetchInitialData: PropTypes.func,
   };
 
   constructor(props) {
@@ -43,7 +33,6 @@ export default class App extends Component {
     return (
       <div>
         <SignageMaster />
-        {/*<Clock {...this.props.time} />*/}
         <Telop />
         {/*<Loadingindicator />*/}
       </div>

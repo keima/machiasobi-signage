@@ -14,7 +14,7 @@ import SideView from "./SideView"
 )
 export default class SignageMaster extends Component {
   static propTypes = {
-    items: PropTypes.arrayOf(PropTypes.object).isRequired
+    items: PropTypes.arrayOf(PropTypes.object)
   };
 
   constructor(props) {
@@ -35,6 +35,7 @@ export default class SignageMaster extends Component {
             name:"テスト場所B",
             duration: -30
           },
+          /*
           {
             name:"テスト場所C",
             duration: 30
@@ -43,6 +44,7 @@ export default class SignageMaster extends Component {
             name:"テスト場所D",
             duration: 90
           },
+          */
         ]} />
       </div>
     );

@@ -25,7 +25,7 @@ export default class SideView extends Component {
               statusText = "早く進んでいます"
             } else if (item.duration == 0) {
               sideViewItemClassName = "sideView__item--ontime"
-              statusIconClassName = "ion-happy-outline"
+              statusIconClassName = "ion-android-checkmark-circle"
               statusText = "定刻通りです"
             } else if (item.duration > 0 && item.duration < 60) {
               sideViewItemClassName = "sideView__item--delay"
@@ -39,14 +39,22 @@ export default class SideView extends Component {
 
             return (
               <div className={`sideView__item ${sideViewItemClassName}`}>
-                <div className="sideView__item__name">{item.name}</div>
+                <div className="sideView__item__name">
+                  <span>
+                    {item.name}
+                  </span>
+                </div>
                 <div className="sideView__item__duration">
-                  <i className="icon ion-clock" />
-                  {Math.abs(item.duration)}<span>分</span>
+                  <span>
+                  <i className="icon ion-clock"/>
+                    {Math.abs(item.duration)}<span>分</span>
+                  </span>
                 </div>
                 <div className="sideView__item__status">
-                  <i className={`icon ${statusIconClassName}`} />
-                  {statusText}
+                  <span>
+                  <i className={`icon ${statusIconClassName}`}/>
+                    {statusText}
+                  </span>
                 </div>
               </div>
             )

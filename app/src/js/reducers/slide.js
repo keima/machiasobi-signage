@@ -1,4 +1,4 @@
-import {STEPS_SUCCESS} from "../actions/index";
+import {STEPS_SUCCESS} from "../actions";
 
 export default function slide(state = {}, action) {
 

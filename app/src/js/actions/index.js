@@ -1,5 +1,4 @@
 import axios from "axios";
-import {parseTime} from "../utils/dates";
 import {weatherTelop} from "../utils/telops";
 
 /* 開発メモ
@@ -11,15 +10,18 @@ import {weatherTelop} from "../utils/telops";
 var api = axios.create({
   baseURL: "https://machiasobi-tools.appspot.com/api/v1/"
 });
-
-export const SYNC_DATE = "SYNC_DATE";
-export function syncDate() {
-  const time = parseTime(new Date());
-  return {
-    type: SYNC_DATE,
-    ...time
-  };
-}
+var gcal = axios.create({
+  baseURL: "https://www.googleapis.com/calendar/v3/calendars",
+  params: {
+    key: "AIzaSyCgK3kr9bdc_Qv_SnSJTxAcS1npBGqyRgw",
+    orderBy: "startTime",
+    singleEvents: false,
+    timeZone: "Asia/Tokyo",
+    maxResults: 10,
+    // timeMin: a.format(),
+    // timeMax: a.endOf("day").format(),
+  }
+});
 
 export const REQUEST_RUNNING = "REQUEST_RUNNING";
 function requestRunning(...fetchName) {
@@ -35,6 +37,15 @@ function stepsSuccess(steps) {
     type: STEPS_SUCCESS,
     receivedAt: Date.now(),
     steps
+  }
+}
+
+export const CALENDARS_SUCCESS = "CALENDARS_SUCCESS";
+function calendarsSuccess(calendars) {
+  return {
+    type: CALENDARS_SUCCESS,
+    receivedAt: Date.now(),
+    calendars
   }
 }
 
@@ -61,9 +72,11 @@ export function fetchInitialData() {
 
     return axios.all([
       api.get("steps"),
+      api.get("calendars"),
       api.get("weather/360010")
-    ]).then(axios.spread(function(steps, weatherInfo) {
-      dispatch(stepsSuccess(steps.data));
+    ]).then(axios.spread(function(steps, calendars, weatherInfo) {
+      dispatch(stepsSuccess(steps.data))
+      dispatch(calendarsSuccess(calendars.data))
       dispatch(telopSuccess(weatherTelop(weatherInfo.data)))
     })).catch( err => {
       if (err.response) {

@@ -1,12 +1,10 @@
 import {combineReducers} from "redux";
-import clock from "./clock";
 import fetching from "./fetching"
 import slide from "./slide";
 import telop from "./telop";
+import calendar from "./calendar"
 
 const reducer = combineReducers({
-  clock,
-
   // isSuperFetching, bool
   fetching, //array [slide, telop] -> slide and telop are fetching now
 

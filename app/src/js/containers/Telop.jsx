@@ -10,7 +10,7 @@ import Marquee from "../libraries/Marquee";
 )
 export default class Telop extends Component {
   static propTypes = {
-    items: PropTypes.arrayOf(PropTypes.string).isRequired
+    items: PropTypes.arrayOf(PropTypes.string)
   };
 
   constructor(props) {

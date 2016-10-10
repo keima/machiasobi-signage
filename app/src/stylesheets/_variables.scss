@@ -27,12 +27,13 @@ $sideViewHeight: $slideshowHeight;
 }
 
 // color
+$_brightness: 25%;
 
 $disasterColor: #FF0000;
-$disasterColorL: lighten($disasterColor, 80%);
-$delayColor : #FFFF00;
-$delayColorL: lighten($delayColor, 80%);
+$disasterColorL: lighten($disasterColor, $_brightness);
+$delayColor : #e1e100;
+$delayColorL: lighten($delayColor, $_brightness);
 $onTimeColor: #9cff6b;
-$onTimeColorL: lighten($onTimeColor, 80%);
+$onTimeColorL: lighten($onTimeColor, $_brightness);
 $hasteColor : #49dfff;
-$hasteColorL: lighten($hasteColor, 80%);
+$hasteColorL: lighten($hasteColor, $_brightness);
